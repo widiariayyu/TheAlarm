@@ -1,0 +1,17 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="row_padding_vertical">10dp</dimen>
+    <dimen name="body_font_size">18sp</dimen>
+    <dimen name="alarm_label_size">14sp</dimen>
+    <dimen name="label_font_size">14sp</dimen>
+    <dimen name="medium_font_size">60dp</dimen>
+    <dimen name="alarm_time_font_size">48sp</dimen>
+    <dimen name="button_footer_height">88dip</dimen>
+    <dimen name="footer_button_size">56dip</dimen>
+    <dimen name="footer_button_layout_margin">16dip</dimen>
+    <dimen name="collapse_expand_height">48dp</dimen>
+</resources>

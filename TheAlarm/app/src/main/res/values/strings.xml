@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">The Alarm</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_3">Tab 3</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="dificulty_lvl">
+        <item>Sederhana</item>
+        <item>Rumit</item>
+        <item>Harus Bangun!</item>
+    </string-array>
+    <string name="delete_alarm">Delete alarm</string>
+    <string name="label">Label</string>
+    <string name="collapse_alarm" msgid="3561772046433483980">"ማንቂያ ሰብስብ"</string>
+    <string name="expand_alarm" msgid="7392616528943305020">"ማንቂያ ዘርጋ"</string>
+    <string name="alarm_vibrate" msgid="3476686921490362230">"ንዘር"</string>
+    <string name="alarm_repeat" msgid="7242985466344233206">"ድገም"</string>
+</resources>
