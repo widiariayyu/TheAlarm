@@ -36,16 +36,10 @@ public class fragment_main extends Fragment {
         setData();
 
         rvTime = (RecyclerView) getView().findViewById(R.id.rv_time);
-        times.add(new TimeModel("06:00"));
-        times.add(new TimeModel("07:00"));
-        times.add(new TimeModel("08:00"));
-        times.add(new TimeModel("09:00"));
-        times.add(new TimeModel("10:00"));
+
         //adapter=new TimeAdapter(getActivity(),times);
         ArrayList<String> times2 = new ArrayList<>();
-        times2.add("20:00");
-        times2.add("10:00");
-        times2.add("09:00");
+
         Log.i("TAG", "onViewCreated: " + times2.get(0));
         TimeAdapter timeAdapter = new TimeAdapter(getActivity(), times);
         rvTime.setAdapter(timeAdapter);
@@ -64,11 +58,7 @@ public class fragment_main extends Fragment {
     }
 
     private void setData(){
-        times.add(new TimeModel("06:00"));
-        times.add(new TimeModel("07:00"));
-        times.add(new TimeModel("08:00"));
-        times.add(new TimeModel("09:00"));
-        times.add(new TimeModel("10:00"));
+
 
     }
 
