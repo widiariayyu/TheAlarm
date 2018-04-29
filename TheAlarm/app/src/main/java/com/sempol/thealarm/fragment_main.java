@@ -47,8 +47,6 @@ public class fragment_main extends Fragment {
 
         return view;
 
-
-
     }
 
     @Override

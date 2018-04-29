@@ -1,51 +1,35 @@
 package com.sempol.thealarm;
 
         import android.annotation.SuppressLint;
-        import android.app.Dialog;
-        import android.app.TimePickerDialog;
+        import android.app.AlarmManager;
+        import android.app.PendingIntent;
         import android.content.Context;
         import android.content.Intent;
-        import android.graphics.Color;
-        import android.graphics.PorterDuff;
         import android.support.design.widget.TabLayout;
         import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.Snackbar;
-        import android.support.v4.app.DialogFragment;
         import android.support.v4.app.FragmentActivity;
-        import android.support.v4.content.ContextCompat;
-        import android.support.v7.app.AppCompatActivity;
         import android.support.v7.widget.LinearLayoutManager;
         import android.support.v7.widget.RecyclerView;
-        import android.support.v7.widget.Toolbar;
 
         import android.support.v4.app.Fragment;
         import android.support.v4.app.FragmentManager;
         import android.support.v4.app.FragmentPagerAdapter;
         import android.support.v4.view.ViewPager;
         import android.os.Bundle;
-        import android.text.format.DateFormat;
-        import android.util.Log;
         import android.view.LayoutInflater;
-        import android.view.Menu;
-        import android.view.MenuItem;
         import android.view.View;
         import android.view.ViewGroup;
 
-        import android.widget.TextView;
-        import android.widget.TimePicker;
-        import android.widget.Toast;
-
         import com.sempol.thealarm.model.TimeModel;
 
-        import org.w3c.dom.Text;
-
         import java.util.ArrayList;
-        import java.util.Calendar;
         import java.util.List;
+        import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends FragmentActivity {
 
     public static List<TimeModel> times = new ArrayList<>();
+    public static List<Long> alarm_time = new ArrayList<Long>();
     public static TimeAdapter adapter;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -67,7 +51,6 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
 
@@ -107,10 +90,12 @@ public class MainActivity extends FragmentActivity {
                     case 0:
                         alarm.setIcon(R.drawable.ic_access_alarm_green_24dp);
                         pengaturan.setIcon(R.drawable.ic_settings_black_24dp);
+
                         break;
                     case 1:
                         alarm.setIcon(R.drawable.ic_access_alarm_black_24dp);
                         pengaturan.setIcon(R.drawable.ic_settings_grenn_24dp);
+                        break;
                 }
             }
 
@@ -120,28 +105,8 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-
-
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                DialogHandler dialogHandler = new DialogHandler();
-                dialogHandler.show(getSupportFragmentManager(),"time_picker");
-
-
-
-            }
-        });
-
-
-
-
-
     }
 
 
@@ -183,9 +148,21 @@ public class MainActivity extends FragmentActivity {
                     rootView = inflater.inflate(R.layout.fragment_main, container, false);
                     RecyclerView rvTime = (RecyclerView) rootView.findViewById(R.id.rv_time);
 
-                    adapter=new TimeAdapter(getActivity(), times);
+                    ///inflater recyclerview
+                    adapter = new TimeAdapter(getActivity(), times);
+
                     rvTime.setAdapter(adapter);
                     rvTime.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+                    FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+                    fab.setOnClickListener(new View.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(View view) {
+                            DialogHandler dialogHandler = new DialogHandler();
+                            dialogHandler.show(getActivity().getSupportFragmentManager(),"time_picker");
+                        }
+                    });
                     break;
 
                 case 2:
@@ -193,6 +170,7 @@ public class MainActivity extends FragmentActivity {
                     rootView = inflater.inflate(R.layout.activity_setting, container, false);
                     break;
             }
+
 
             return rootView;
 
@@ -217,8 +195,30 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show the numbe of pages.
             return 2;
         }
     }
+
+    public void setAlarm(long time) {
+        //getting the alarm manager
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        //creating a new intent specifying the broadcast receiver
+        Intent intent = new Intent(this, AlarmReceiver.class);
+
+        //creating a pending intent using the intent
+        PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+        //setting the repeating alarm that will be fired every day
+        am.setRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pi);
+    }
+
+//    public Long converter (long hour, long minute){
+//        hour = TimeUnit.HOURS.toMillis(hour);
+//        minute = TimeUnit.MINUTES.toMillis(minute);
+//
+//        long time_inMillis = hour+minute;
+//        return  time_inMillis;
+//    }
 }

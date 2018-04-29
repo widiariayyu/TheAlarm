@@ -30,17 +30,15 @@ public class DialogHandler extends DialogFragment {
         int hour= calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
+        long milis = calendar.getTimeInMillis();
+
+        MainActivity.alarm_time.add(milis);
+
 
         TimePickerDialog dialog;
         TimeSettings timeSettings = new TimeSettings(getActivity());
             dialog = new TimePickerDialog(getActivity(),timeSettings,hour,minute, DateFormat.is24HourFormat(getActivity()));
             return dialog;
-
-
-
     }
-//    public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-//        String time= null;
-//        TimeDisplay.setText(time);
-//    }
+
 }

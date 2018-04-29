@@ -1,28 +1,38 @@
 package com.sempol.thealarm;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sempol.thealarm.model.TimeMilis;
 import com.sempol.thealarm.model.TimeModel;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
     Context context;
-    List<TimeModel> times;
+    List<TimeModel> times ;//<-array list
+    List<TimeMilis> alarm_time;
+
 
     public TimeAdapter(Context context, List<TimeModel> times) {
         this.context = context;
         this.times = times;
     }
+
 
     @Override
     public TimeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,6 +43,7 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(TimeAdapter.ViewHolder holder, final int position) {
+
         holder.txtTime.setText(times.get(position).getTime());
 
         holder.getAdapterPosition();
@@ -44,9 +55,20 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
                 Toast.makeText(context,"Alarm was deleted",Toast.LENGTH_LONG).show();
             }
         });
+
+        holder.alarm_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if(checked){
+                    Toast.makeText(context, "alarm is online", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "alarm is offline", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
-    private void removeItem(int position) { //sintak to remove alarm
+    private void removeItem(int position) { //method to remove alarm
 
         times.remove(position);                        //remove alarm position
         notifyItemRemoved(position);                    //give a notify
@@ -56,19 +78,25 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return times.size();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView txtTime;
         ImageView mDelete;
+        Switch alarm_switch;
         public ViewHolder(View itemView) {
             super(itemView);
             txtTime=(TextView) itemView.findViewById(R.id.digital_clock);
             mDelete = (ImageView) itemView.findViewById(R.id.delete);
+            alarm_switch = (Switch) itemView.findViewById(R.id.alarm_switch);
 
 
         }
     }
+
+
+
 
 
 
