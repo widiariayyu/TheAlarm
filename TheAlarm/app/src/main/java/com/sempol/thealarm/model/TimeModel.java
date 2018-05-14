@@ -1,17 +1,18 @@
 package com.sempol.thealarm.model;
 
 public class TimeModel {
-    private String time;
+    private long time;
 
-    public TimeModel(String time) {
+    public TimeModel(long time) {
         this.time = time;
     }
 
-    public String getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
+
 }

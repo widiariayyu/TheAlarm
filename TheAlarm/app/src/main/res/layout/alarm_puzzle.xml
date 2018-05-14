@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sempol.thealarm.widget.AlarmPuzzle"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="404"
+        android:textStyle="bold"
+        android:textSize="80sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Damn it seems\nactivity not finished"
+        android:textSize="20sp"
+        android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/btn_puzzle"
+        android:layout_width="500px"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:textSize="20sp"/>
+
+</LinearLayout>

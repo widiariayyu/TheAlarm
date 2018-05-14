@@ -26,8 +26,12 @@ public class TimeSettings implements TimePickerDialog.OnTimeSetListener {
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        MainActivity.times.add(new TimeModel(hourOfDay + ":" + minute));
+//        MainActivity.times.add(new TimeModel(hourOfDay + ":" + minute));
         MainActivity.adapter.notifyDataSetChanged();
+
     }
 
 }
+/**
+ this class is not used
+ */

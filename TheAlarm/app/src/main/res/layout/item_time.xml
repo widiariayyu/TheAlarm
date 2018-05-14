@@ -28,7 +28,7 @@
             android:baselineAligned="true"
             android:clickable="true"
             android:gravity="center"
-            android:textColor="@color/clock_white"
+            android:textColor="@android:color/secondary_text_light"
             android:textSize="@dimen/alarm_time_font_size"
             />
 
@@ -43,7 +43,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|end"
             android:thumbTextPadding="10dp"
-            android:checked="true"/>
+            />
     </LinearLayout>
 
     <FrameLayout
@@ -62,7 +62,7 @@
             android:paddingRight="8dp"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
-            android:src="@drawable/ic_delete" />
+            android:src="@drawable/ic_delete_black_24dp" />
 
         <LinearLayout
             android:id="@+id/expand_area"
@@ -88,8 +88,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
         android:layout_width="match_parent"
-        android:background="#28ffffff"
+        android:background="#28121212"
         android:layout_gravity="bottom" />
+
         <com.sempol.thealarm.widget.EllipsizeLayout
             android:id="@+id/summary"
             android:layout_width="match_parent"

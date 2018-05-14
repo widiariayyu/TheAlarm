@@ -20,9 +20,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <receiver android:name=".AlarmReceiver"
-            android:enabled="true"
-            android:exported="true"/>
+
+        <receiver android:name=".AlarmReceiver" />
+
+        <activity android:name=".TimePickerHandler" />
+        <activity android:name=".widget.AlarmPuzzle"></activity>
     </application>
 
 </manifest>

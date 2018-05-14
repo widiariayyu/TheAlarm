@@ -19,17 +19,21 @@ package com.sempol.thealarm;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.Toast;
+
 
         import com.sempol.thealarm.model.TimeModel;
 
+        import java.text.ParseException;
+        import java.text.SimpleDateFormat;
         import java.util.ArrayList;
+        import java.util.Date;
         import java.util.List;
         import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends FragmentActivity {
 
     public static List<TimeModel> times = new ArrayList<>();
-    public static List<Long> alarm_time = new ArrayList<Long>();
     public static TimeAdapter adapter;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -51,7 +55,6 @@ public class MainActivity extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         // Create the adapter that will return a fragment for each of the three
@@ -157,10 +160,14 @@ public class MainActivity extends FragmentActivity {
                     FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
                     fab.setOnClickListener(new View.OnClickListener()
                     {
+                        public Context context;
+
                         @Override
                         public void onClick(View view) {
-                            DialogHandler dialogHandler = new DialogHandler();
-                            dialogHandler.show(getActivity().getSupportFragmentManager(),"time_picker");
+//                            DialogHandler dialogHandler = new DialogHandler();
+//                            dialogHandler.show(getActivity().getSupportFragmentManager(),"time_picker");
+                            Intent picker = new Intent(getContext(), TimePickerHandler.class);
+                            startActivity(picker);
                         }
                     });
                     break;
@@ -211,14 +218,20 @@ public class MainActivity extends FragmentActivity {
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, 0);
 
         //setting the repeating alarm that will be fired every day
-        am.setRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pi);
+        am.setRepeating(AlarmManager.RTC, time, AlarmManager.INTERVAL_DAY, pi);
     }
 
-//    public Long converter (long hour, long minute){
-//        hour = TimeUnit.HOURS.toMillis(hour);
-//        minute = TimeUnit.MINUTES.toMillis(minute);
-//
-//        long time_inMillis = hour+minute;
-//        return  time_inMillis;
+
+//    public long convert(String time){
+//        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+//        long timeInMilliseconds=0;
+//        try {
+//            Date mDate = sdf.parse(time);
+//            timeInMilliseconds = mDate.getTime();
+//            System.out.println("Date in milli :: " + timeInMilliseconds);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return timeInMilliseconds;
 //    }
 }

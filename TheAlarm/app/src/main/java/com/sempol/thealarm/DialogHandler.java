@@ -12,7 +12,9 @@ import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-
+/**
+    this class is not used
+ */
 
 public class DialogHandler extends DialogFragment {
 //    TextView TimeDisplay;
@@ -29,16 +31,13 @@ public class DialogHandler extends DialogFragment {
         Calendar calendar = Calendar.getInstance();
         int hour= calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-
         long milis = calendar.getTimeInMillis();
-
-        MainActivity.alarm_time.add(milis);
 
 
         TimePickerDialog dialog;
         TimeSettings timeSettings = new TimeSettings(getActivity());
-            dialog = new TimePickerDialog(getActivity(),timeSettings,hour,minute, DateFormat.is24HourFormat(getActivity()));
-            return dialog;
+        dialog = new TimePickerDialog(getActivity(),timeSettings,hour,minute,DateFormat.is24HourFormat(getActivity()));
+        return dialog;
     }
 
 }
