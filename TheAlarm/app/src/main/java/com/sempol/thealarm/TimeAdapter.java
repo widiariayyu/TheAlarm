@@ -36,7 +36,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
 
     @Override
     public TimeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View view= LayoutInflater.from(context).inflate(R.layout.item_time,parent,false);
+
         ViewHolder viewHolder=new ViewHolder(view);
         return viewHolder;
     }
@@ -47,6 +49,15 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
         holder.txtTime.setText(text_times);
 
         holder.getAdapterPosition();
+
+//        if (times.isEmpty()) {
+//            .setVisibility(View.GONE);
+//            emptyView.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            recyclerView.setVisibility(View.VISIBLE);
+//            emptyView.setVisibility(View.GONE);
+//        }
 
         //this function is to delete alarm from RecyclerView
         holder.mDelete.setOnClickListener(new View.OnClickListener() {

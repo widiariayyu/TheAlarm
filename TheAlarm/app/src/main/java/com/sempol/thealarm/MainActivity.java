@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity {
         alarm.setIcon(R.drawable.ic_access_alarm_green_24dp);
         pengaturan.setIcon(R.drawable.ic_settings_black_24dp);
         alarm.setText("Alarm");
-        pengaturan.setText("Setting");
+        pengaturan.setText("About");
 
         tabLayout.addTab(alarm, 0);
         tabLayout.addTab(pengaturan, 1);

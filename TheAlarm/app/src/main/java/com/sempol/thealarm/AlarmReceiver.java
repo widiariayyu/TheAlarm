@@ -21,6 +21,7 @@ public class AlarmReceiver extends BroadcastReceiver{
         Toast.makeText(context, "Alarm!! Alarm!! Alarm!!", Toast.LENGTH_SHORT).show();
                 //this thing to start activity
         Intent puzzle = new Intent(context, AlarmPuzzle.class);
+        puzzle.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         context.startActivity(puzzle);
 
     }
