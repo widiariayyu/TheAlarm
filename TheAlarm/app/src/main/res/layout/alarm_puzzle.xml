@@ -13,9 +13,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20pt"
-            android:textColor="@color/accent_dark"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
             android:layout_marginTop="50dp"
+            android:textSize="20pt"
             android:text="SOLVE!"
             android:textAlignment="center"/>
     </RelativeLayout>
