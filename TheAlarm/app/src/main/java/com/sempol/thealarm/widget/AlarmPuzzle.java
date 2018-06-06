@@ -65,9 +65,9 @@ public class AlarmPuzzle extends AppCompatActivity {
     }
 
     public void setMath(){
-        pointA = random.nextInt(20);
+        pointA = random.nextInt(20); // menyetting agar angka yang keluar adalah random
         pointB = random.nextInt(10);
-        result = setResult(pointA,pointB );
+        result = setResult(pointA,pointB ); // hasil untuk perhitungan pointA dan pointB
         tv_pointA.setText(""+pointA);
         tv_pointB.setText(""+pointB);
         setBtn_submit(result);
@@ -89,13 +89,13 @@ public class AlarmPuzzle extends AppCompatActivity {
         type = random.nextInt(3);
         if (type==0){
             tv_type.setText("x");
-            result = A*B;
+            result = A*B; // untuk kali
         }else if (type == 1){
             tv_type.setText("+");
-            result = A+B;
+            result = A+B; // untuk tambah
         }else if (type == 2){
             tv_type.setText("-");
-            result = A-B;
+            result = A-B; // untuk kurang
         }
         return result;
     }
@@ -106,19 +106,19 @@ public class AlarmPuzzle extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     ans = et_answer.getText().toString();
-                    answer = Integer.parseInt(ans);
+                    answer = Integer.parseInt(ans); //ngeset supaya jawaban diubah ke variabel integer
                     if (answer==res){
                         Toast.makeText(AlarmPuzzle.this, "Anda Benar", Toast.LENGTH_SHORT).show();
 //                        finishAffinity();
-                        finish();
-                        System.exit(0);
+                        finish(); // sintak untuk membuat alarm selesai berbunyi jika jawaban benar
+                        System.exit(0); // menutup game jika jawaban benar
                     }else {
-                        Toast.makeText(AlarmPuzzle.this, "Salah Goblok!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlarmPuzzle.this, "Maaf Anda Salah!!!", Toast.LENGTH_SHORT).show();
                         et_answer.setText("", null);
                         setMath();
                     }
                 }catch (NumberFormatException e){
-                    Toast.makeText(AlarmPuzzle.this, "Masukin Jawaban Dulu Bangsat!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlarmPuzzle.this, "Masukin Jawaban Dulu Ya!!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -132,10 +132,10 @@ public class AlarmPuzzle extends AppCompatActivity {
                 try {
                     ans = et_answer.getText().toString();
                     answer = Integer.parseInt(ans);
-                    answer =answer*-1;
-                    et_answer.setText(String.valueOf(answer));
+                    answer =answer*-1; // menyetting agar value angka yang dimasukkan bernilai minus
+                    et_answer.setText(String.valueOf(answer)); // ngeset textview supaya bisa dijawab
                 }catch (NumberFormatException e){
-                    Toast.makeText(AlarmPuzzle.this, "Masukin Jawaban Dulu Bangsat!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AlarmPuzzle.this, "Masukin Jawaban Dulu Ya!!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
