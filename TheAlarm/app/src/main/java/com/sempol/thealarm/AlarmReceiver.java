@@ -3,12 +3,8 @@ package com.sempol.thealarm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.sempol.thealarm.widget.AlarmPuzzle;
 
 /**
  * Created by Firelord on 23/04/2018.

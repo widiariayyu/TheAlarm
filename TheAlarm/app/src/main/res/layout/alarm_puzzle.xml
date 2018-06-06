@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_color"
-    tools:context="com.sempol.thealarm.widget.AlarmPuzzle"
-    android:orientation="vertical">
+    tools:context="com.sempol.thealarm.AlarmPuzzle"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
+
+    <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -19,7 +19,18 @@
             android:textSize="20pt"
             android:text="SOLVE!"
             android:textAlignment="center"/>
-    </RelativeLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="14pt"
+            android:text="To Turn Off\n The Alarm"
+            android:textAlignment="center"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"

@@ -1,16 +1,13 @@
-package com.sempol.thealarm.widget;
+package com.sempol.thealarm;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import android.media.MediaPlayer;
+import android.app.ActivityManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,10 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.sempol.thealarm.AlarmReceiver;
-import com.sempol.thealarm.R;
-import com.sempol.thealarm.TimeAdapter;
 
 import java.util.Random;
 
@@ -45,7 +38,9 @@ public class AlarmPuzzle extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.alarm_puzzle);
-
+        final Window win= getWindow();
+        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 //        final MediaPlayer mediaPlayer = new MediaPlayer();
 //        mediaPlayer.setDataSource(this, Settings.System.DEFAULT_ALARM_ALERT_URI);
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
@@ -63,6 +58,8 @@ public class AlarmPuzzle extends AppCompatActivity {
         setMath();
         setBtn_change();
     }
+
+
 
     public void setMath(){
         pointA = random.nextInt(20); // menyetting agar angka yang keluar adalah random
@@ -140,6 +137,12 @@ public class AlarmPuzzle extends AppCompatActivity {
             }
         });
         return btn_change;
+    }
+
+
+        @Override
+    public void onBackPressed() {
+        //this will prevent the back button from closing the activity
     }
 
 }

@@ -24,7 +24,9 @@
         <receiver android:name=".AlarmReceiver" />
 
         <activity android:name=".TimePickerHandler" />
-        <activity android:name=".widget.AlarmPuzzle"></activity>
+        <activity android:name=".AlarmPuzzle"></activity>
     </application>
+    ///prevent the home button from closing the activity
+
 
 </manifest>

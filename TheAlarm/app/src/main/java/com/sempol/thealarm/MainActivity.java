@@ -19,6 +19,8 @@ package com.sempol.thealarm;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.LinearLayout;
+        import android.widget.TextView;
         import android.widget.Toast;
 
 
@@ -73,7 +75,7 @@ public class MainActivity extends FragmentActivity {
         final TabLayout.Tab pengaturan = tabLayout.newTab();
 
         alarm.setIcon(R.drawable.ic_access_alarm_green_24dp);
-        pengaturan.setIcon(R.drawable.ic_settings_black_24dp);
+        pengaturan.setIcon(R.drawable.ic_info_outline_black_24dp);
         alarm.setText("Alarm");
         pengaturan.setText("About");
 
@@ -92,12 +94,12 @@ public class MainActivity extends FragmentActivity {
                 switch (position){
                     case 0:
                         alarm.setIcon(R.drawable.ic_access_alarm_green_24dp);
-                        pengaturan.setIcon(R.drawable.ic_settings_black_24dp);
+                        pengaturan.setIcon(R.drawable.ic_info_outline_black_24dp);
 
                         break;
                     case 1:
                         alarm.setIcon(R.drawable.ic_access_alarm_black_24dp);
-                        pengaturan.setIcon(R.drawable.ic_settings_grenn_24dp);
+                        pengaturan.setIcon(R.drawable.ic_info_outline_activated_24dp);
                         break;
                 }
             }
@@ -150,12 +152,16 @@ public class MainActivity extends FragmentActivity {
                     //Pindah ke TAB 1
                     rootView = inflater.inflate(R.layout.fragment_main, container, false);
                     RecyclerView rvTime = (RecyclerView) rootView.findViewById(R.id.rv_time);
+                    LinearLayout empty_view =(LinearLayout) rootView.findViewById(R.id.view_empty_alarm);
+                    TextView mutedAlarmText = (TextView) rootView.findViewById(R.id.tv_mutedAlarm);
+
 
                     ///inflater recyclerview
                     adapter = new TimeAdapter(getActivity(), times);
-
                     rvTime.setAdapter(adapter);
                     rvTime.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+
 
                     FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
                     fab.setOnClickListener(new View.OnClickListener()
@@ -164,12 +170,11 @@ public class MainActivity extends FragmentActivity {
 
                         @Override
                         public void onClick(View view) {
-//                            DialogHandler dialogHandler = new DialogHandler();
-//                            dialogHandler.show(getActivity().getSupportFragmentManager(),"time_picker");
                             Intent picker = new Intent(getContext(), TimePickerHandler.class);
                             startActivity(picker);
                         }
                     });
+
                     break;
 
                 case 2:

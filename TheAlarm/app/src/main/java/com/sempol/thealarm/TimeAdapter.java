@@ -143,9 +143,9 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.ViewHolder> {
 
         //setting alarm depend on SDK version
         if(Build.VERSION.SDK_INT >19){
-            am.setExact(AlarmManager.RTC,time,pi);
+            am.setExact(AlarmManager.RTC_WAKEUP,time,pi);
         }else{
-            am.setRepeating(AlarmManager.RTC,AlarmManager.INTERVAL_DAY,time,pi);
+            am.setRepeating(AlarmManager.RTC_WAKEUP,AlarmManager.INTERVAL_DAY,time,pi);
         }
     }
 
